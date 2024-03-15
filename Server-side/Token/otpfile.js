@@ -61,11 +61,13 @@ router.get("/send-otp", async (req, res) => {
 
     const querySnapshot = await query.get();
     if (!destinationNumber || querySnapshot.empty) {
-      return res.status(400).send("Error: Phone number not provided");
+      return res
+        .status(400)
+        .send({ error: "Incorrect Phone Number", status: 400 });
     }
 
     const otp = generateOTP();
-
+    await db1.collection("OTP").add({ otp });
     const messageContent = ` Your OTP is: ${otp}`;
 
     const postData = JSON.stringify({

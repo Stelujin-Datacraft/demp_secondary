@@ -7,11 +7,11 @@ const { firebaseApp } = require("../main");
 const db1 = firebaseApp.firestore();
 
 router.get("/get_user", async (req, res) => {
-  const user_id = req.query.user_id;
+  const number = req.query.number;
   const pass = req.query.pass;
   try {
     const user = db1.collection("Assembly2");
-    const query = user.where("user_id", "==", user_id);
+    const query = user.where("mob_no", "==", number);
 
     const querySnapshot = await query.get();
     const response = querySnapshot.docs.map((value) => value.data());
