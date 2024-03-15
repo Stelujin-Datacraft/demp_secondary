@@ -1,0 +1,117 @@
+function getData() {
+    return [
+        {
+            "dolphin": "Central",
+            "interactionDurationTM": 9267,
+            "interactionDurationTMLower": 9216,
+            "interactionDurationTMUpper": 9475,
+            "interactionDurationYM": 8225,
+            "interactionDurationYMLower": 8115,
+            "interactionDurationYMUpper": 9168,
+            "interactionDurationTS": 1958,
+            "interactionDurationTSLower": 1802,
+            "interactionDurationTSUpper": 2018,
+            "numberOfLooksTM": 4,
+            "numberOfLooksYM": 4
+        },
+        {
+            "dolphin": "East",
+            "interactionDurationTM": 7587,
+            "interactionDurationTMLower": 5058,
+            "interactionDurationTMUpper": 8956,
+            "interactionDurationYM": 9278,
+            "interactionDurationYMLower": 7411,
+            "interactionDurationYMUpper": 10114,
+            "interactionDurationTS": 1536,
+            "interactionDurationTSLower": 1462,
+            "interactionDurationTSUpper": 1638,
+            "numberOfLooksTM": 0,
+            "numberOfLooksYM": 0
+        },
+        {
+            "dolphin": "West",
+            "interactionDurationTM": 7852,
+            "interactionDurationTMLower": 7387,
+            "interactionDurationTMUpper": 7732,
+            "interactionDurationYM": 8027,
+            "interactionDurationYMLower": 6162,
+            "interactionDurationYMUpper": 8580,
+            "interactionDurationTS": 1536,
+            "interactionDurationTSLower": 1462,
+            "interactionDurationTSUpper": 1638,
+            "numberOfLooksTM": 2,
+            "numberOfLooksYM": 2
+        },
+        {
+            "dolphin": "Kannad",
+            "interactionDurationTM": 6138,
+            "interactionDurationTMLower": 4976,
+            "interactionDurationTMUpper": 8178,
+            "interactionDurationYM": 8052,
+            "interactionDurationYMLower": 7437,
+            "interactionDurationYMUpper": 8747,
+            "interactionDurationTS": 1536,
+            "interactionDurationTSLower": 1462,
+            "interactionDurationTSUpper": 1638,
+            "numberOfLooksTM": 1,
+            "numberOfLooksYM": 1
+        },
+        {
+            "dolphin": "Phulambri",
+            "interactionDurationTM": 6138,
+            "interactionDurationTMLower": 4976,
+            "interactionDurationTMUpper": 8178,
+            "interactionDurationYM": 8052,
+            "interactionDurationYMLower": 7437,
+            "interactionDurationYMUpper": 8747,
+            "interactionDurationTS": 1536,
+            "interactionDurationTSLower": 1462,
+            "interactionDurationTSUpper": 1638,
+            "numberOfLooksTM": 10,
+            "numberOfLooksYM": 6
+        },
+        {
+            "dolphin": "sillod",
+            "interactionDurationTM": 6138,
+            "interactionDurationTMLower": 4976,
+            "interactionDurationTMUpper": 8178,
+            "interactionDurationYM": 8052,
+            "interactionDurationYMLower": 7437,
+            "interactionDurationYMUpper": 8747,
+            "interactionDurationTS": 1536,
+            "interactionDurationTSLower": 1462,
+            "interactionDurationTSUpper": 1638,
+            "numberOfLooksTM": 0,
+            "numberOfLooksYM": 0
+        },
+        {
+            "dolphin": "Vijapur",
+            "interactionDurationTM": 6138,
+            "interactionDurationTMLower": 4976,
+            "interactionDurationTMUpper": 8178,
+            "interactionDurationYM": 8052,
+            "interactionDurationYMLower": 7437,
+            "interactionDurationYMUpper": 8747,
+            "interactionDurationTS": 1536,
+            "interactionDurationTSLower": 1462,
+            "interactionDurationTSUpper": 1638,
+            "numberOfLooksTM": 0,
+            "numberOfLooksYM": 0
+        },
+        {
+            "dolphin": "Gangapur",
+            "interactionDurationTM": 6138,
+            "interactionDurationTMLower": 4976,
+            "interactionDurationTMUpper": 8178,
+            "interactionDurationYM": 8052,
+            "interactionDurationYMLower": 7437,
+            "interactionDurationYMUpper": 8747,
+            "interactionDurationTS": 1536,
+            "interactionDurationTSLower": 1462,
+            "interactionDurationTSUpper": 1638,
+            "numberOfLooksTM": 4,
+            "numberOfLooksYM": 4
+        }
+
+    ];
+}

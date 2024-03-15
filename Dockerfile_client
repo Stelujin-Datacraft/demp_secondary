@@ -1,0 +1,29 @@
+FROM node:17-alpine as dependencies
+# WORKDIR /app
+RUN echo "1"
+WORKDIR /app
+RUN echo "2"
+RUN pwd
+RUN ls -la 
+RUN echo "3"
+COPY Client-Side/iux-demp/package*.json ./
+RUN echo "4"
+# RUN npm i
+
+RUN npm install --production
+RUN npm install react-router-dom@5.2.0
+RUN npm install axios
+RUN echo "5"
+# COPY ./Cloud_run/Client-Side/iux-demp . 
+COPY Client-Side/iux-demp ./
+RUN echo "6"
+
+# Build production image
+FROM dependencies as builder
+RUN echo "7"
+RUN npm run build
+RUN echo "8"
+EXPOSE 3000
+RUN echo "9"
+CMD npm run start
+RUN echo "10"

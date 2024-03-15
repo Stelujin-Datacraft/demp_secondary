@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "modified-glyph-416314",
+  "private_key_id": "6b363db68f3248d40fca7dc088eecbf9daaf09e8",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQClecHqFBraOHEM\nSxPM8UJvsquXk+eBfx16SWmTKcmxhDJtESg1+GVLv4ajUTw6ADWYGvgUWOn/gsnf\nNUOlTuVTreKVQrX93fTaz97Y6iCliItCg04bx4mv/9IdWKApcsITE8yzPFCHOSge\nAhMzjwnaiorMXLJcm5buLKoMrALd+FobmLOcWr6LVtQAJmGao2vE1XRs/jOw1QMu\nBWCvn72YhF5S/k+rviYQ3+ivhNzWwh59X+8wqSadA+0f4LQ3BGQgjYz2mYcj+9SI\nEat/4xpfusUWyh+FsdmEl+5JjKqiI/VRSpCMvQcmO4sD0NnW5rVOqImDvQDtbBjd\nA8hH/Lm9AgMBAAECggEAAoE1TjW/sk3oaCc6xX9hYg9ySXkTqAIkkBVMY83eH7HA\nkaYQ1cBMyDi98PrpznbyWLsPxj8SS6vPInHL9FSdZAbdxySbXJxfeHBtDxt8IwVO\nFlOmewUqMF/O7mLJCdeS2HcUQiJHlcRntwyQ/dbMb2Jpd25vxLcWMcS7TjXMVU/G\n0kYFK8siRRvge52EpQRmJx4DhYkkb1oyafQM+xwCFqaY6WF3Rdd9qtm/AXs/pl+l\nw5y2n9hDQvjMmuEmAzPA9rYY1Uwk1tMX3lFqyf6gFVz+8I2iU02rDR2hKAfD4irY\noJXOdXPsYu43p3oiSh/YyyriwsX2ul73W8jkfABMAQKBgQDOtLVLWWcefe4cNMd8\nBwFz6N9JLkvX2FT51Yw2JvGkHhN4+qI9fUC6RdFbRRC+RsBpLp8FZDfI5c2z9+Mi\ndOo0jC64ZCbzB6+sVT7cXvu57CXxrfKTK9U66DdJ0ynCwiM0P1pXZ5j0S5nmL4rp\nUd+z/nO77iuGX7I94OYGkoREyQKBgQDM7/YhmZUoP2+IcQw/wtjkXwPwhcBNRDVC\nFL2R+fklLeB+IAEQS7ZSai0KhLXkVmGsNVcLuBW5yL6XLLMEP5T7VJziJc7uLuVE\nvNB1eVAhfJfYK8prE6t+7LfMSssvomUxu6IEsOnK5Egz4DLnKaMnwt6gxN16d5yB\ngC40DxNLVQKBgBAtUlbwS0K2plDszIPnZHS2z+rBRcxBsPzQeqWuTJEEjY+VRec8\nCznIxwa2lAXgMaTJskZQvpDpczzXdJ44ui+cnPdvVyEEA/qfvUiv4lF9qsaMT4S3\nFHwEunb7oLQOT4UCREa849qSpBvAssVp0/EZQ+N8U0mz6ZYwKLBw/QsJAoGAGpIO\nFmMkPJik7ErD7MxldI6BI0EkIqByS0QHJBMF43UkQxYBLUyzsdHETzXPo3Azr7Em\nvQU8A99sHouUFjvsI/3fbU67mpQH87aLTH/TDNRrl4Jt9x4QwR8N4XXdDCsA9ca/\nBd6uITkhx2ANGX2Dgtc4KB3+HS++4edtliBSPxUCgYEAgSG5AczS+JUH1yIzVfjL\nEdLed6KUEYKyuKI41Z8MetEvnVftR419BLCX2n8m3aliPppFpfiXXoKEwScdqUCI\n6/nJAAtyRiBP6jhIOIqIa41eEOfQB8qyBs56nFzKVJ0LXr2DBRtSuZPfnhhX8oF1\n4q3zY4HX+u0Bcu5XDasfY9g=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firestore-demp-ext@modified-glyph-416314.iam.gserviceaccount.com",
+  "client_id": "115471371203039287390",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firestore-demp-ext%40modified-glyph-416314.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
