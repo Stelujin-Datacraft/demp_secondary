@@ -25,7 +25,7 @@ router.get("/get_user", async (req, res) => {
       const user = db1.collection("OTP");
       const getUser = await user.get();
       const response = getUser.docs.map((value) => value.data());
-      const otp1 = response[0]["otpvalue"];
+      const otp1 = response[0]["otp"];
 
       if (pass === otp1) {
         const tokenvalue = token(10);

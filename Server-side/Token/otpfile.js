@@ -66,7 +66,7 @@ router.get("/send-otp", async (req, res) => {
         .send({ error: "Incorrect Phone Number", status: 400 });
     }
 
-    const otp = generateOTP();
+    const otp = String(generateOTP());
     await db1.collection("OTP").add({ otp });
     const messageContent = ` Your OTP is: ${otp}`;
 
