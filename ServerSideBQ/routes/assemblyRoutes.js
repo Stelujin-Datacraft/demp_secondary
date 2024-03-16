@@ -29,4 +29,51 @@ router.get('/get_location_data', async (req, res) => {
 });
 
 
+
+
+router.get('/get_assembly_data', async (req, res) => {
+    try {
+        // Get the assembly parameter from the request query
+        const assembly = req.query.assembly;
+
+        // Construct the base query to get assembly data
+        let baseQuery = `
+            SELECT
+                sector,
+                SUM(total_votes) AS total_votes,
+                SUM(male_votes) AS male_votes,
+                SUM(female_votes) AS female_votes,
+                SUM(trans_votes) AS transgender_votes,
+                SUM(SAFE_CAST(voters AS INT64)) AS total_voters_actuals,
+                COALESCE(COUNT(CASE WHEN issues = 'yes' THEN 1 END), 0) AS issues,
+                ROUND((SUM(total_votes) / SUM(SAFE_CAST(voters AS INT64)) * 100), 2) AS poll_total_per,
+                ROUND((SUM(male_votes) / SUM(SAFE_CAST(voters AS INT64)) * 100), 2) AS poll_male_per,
+                ROUND((SUM(female_votes) / SUM(SAFE_CAST(voters AS INT64)) * 100), 2) AS poll_female_per,
+                ROUND((SUM(trans_votes) / SUM(SAFE_CAST(voters AS INT64)) * 100), 2) AS poll_transgender_per
+            FROM
+                \`modified-glyph-416314.demp_dev_master.demp_core\`
+            WHERE
+                SAFE_CAST(voters AS INT64) IS NOT NULL`;
+
+        // If assembly parameter is provided and not 'all', add condition for specific sector
+        if (assembly && assembly !== 'all') {
+            baseQuery += ` AND sector = '${assembly}'`;
+        }
+
+        // Add GROUP BY clause to the query
+        baseQuery += ' GROUP BY sector';
+        console.log(baseQuery)
+        // Execute the query
+        const rows = await bigqueryService.executeQuery(baseQuery);
+        console.log(rows)
+        // Return the result
+        res.status(200).json({ status: 'success', data: rows });
+    } catch (error) {
+        console.error('Error fetching assembly data:', error);
+        res.status(500).json({ status: 'error', message: 'Internal server error' });
+    }
+});
+
+
+
 module.exports = router;

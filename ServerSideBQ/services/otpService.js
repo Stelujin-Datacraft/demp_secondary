@@ -17,6 +17,16 @@ async function checkMobileNumberExists(mobileNumber) {
         return false; // Return false in case of any error
     }
 }
+
+
+async function saveOtpInCache(mobileNumber, otp) {
+    try {
+        const query = `INSERT INTO \`modified-glyph-416314.demp_dev_master.demp_user_cache\` (mob, token, otp) VALUES ('${mobileNumber}', GENERATE_UUID(), '${otp}')`;
+        await bigqueryService.executeQuery(query);
+    } catch (error) {
+        console.error('Error saving OTP in cache:', error);
+    }
+}
 // Function to check if mobile number exists in the database
 
 // Function to generate a random 4-digit OTP
@@ -32,7 +42,7 @@ async function sendWhatsAppMessage(destinationNumber) {
 
         if (mobileNumberExists) {
             const otp = generateOTP();
-
+            await saveOtpInCache(destinationNumber, otp);
             const options = {
                 'method': 'POST',
                 'hostname': '1vz58k.api.infobip.com',
@@ -97,6 +107,48 @@ async function sendWhatsAppMessage(destinationNumber) {
     }
 }
 
+async function verifyOtp(mobileNumber, otp) {
+    try {
+        // Query to check if the mobile number and OTP match in the cache table
+        //const query = `SELECT mob, token FROM \`modified-glyph-416314.demp_dev_master.demp_user_cache\` WHERE mob = '${mobileNumber}' AND otp = '${otp}'`;
+        console.log(mobileNumber,otp)
+        const query = `
+            SELECT main.mob, main.token, main.otp, sub.sector, sub.level 
+            FROM (
+                SELECT mob, token, otp 
+                FROM \`modified-glyph-416314.demp_dev_master.demp_user_cache\` 
+                WHERE mob = '${mobileNumber}' AND otp = '${otp}'
+            ) AS main
+            JOIN (
+                SELECT sector, level, blo_mob 
+                FROM \`modified-glyph-416314.demp_dev_master.demp_auth_level_data\` 
+                WHERE blo_mob = '${mobileNumber}'
+            ) AS sub
+            ON main.mob = sub.blo_mob`;
+        // Execute the query
+       /* const query = `
+           
+                SELECT sector, level, blo_mob 
+                FROM \`modified-glyph-416314.demp_dev_master.demp_auth_level_data\` 
+                WHERE blo_mob = '${mobileNumber}'`;*/
+
+        const [rows] = await bigqueryService.executeQuery(query);
+        console.log(rows)
+        // Check if a matching record was found
+        if (rows != null) {
+
+            return { status: 'success', data: { mobileNumber: mobileNumber, token: rows.token, assembly:rows.sector, level:rows.level } };
+        } else {
+            return { status: 'failed', message: 'Incorrect mobile number or OTP' };
+        }
+    } catch (error) {
+        console.error('Error verifying OTP:', error);
+        return { status: 'error', message: 'Internal server error' };
+    }
+}
+
+
 module.exports = {
-    sendWhatsAppMessage
+    sendWhatsAppMessage,
+    verifyOtp
 };
