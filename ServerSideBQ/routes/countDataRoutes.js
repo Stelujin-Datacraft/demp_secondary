@@ -17,6 +17,7 @@ router.get('/get_count_data', async (req, res) => {
                 SUM(female_votes) AS female_count,
                 SUM(trans_votes) AS trans_count,
                 SUM(SAFE_CAST(voters AS INT64)) AS total_voters_actuals,
+                COALESCE(COUNT(CASE WHEN issues = 'YES' THEN 1 END), 0) AS issues,
                 ROUND((SUM(total_votes) / SUM(SAFE_CAST(voters AS INT64)) * 100), 2) AS total_count_per,
                 ROUND((SUM(male_votes) / SUM(SAFE_CAST(voters AS INT64)) * 100), 2) AS male_count_per,
                 ROUND((SUM(female_votes) / SUM(SAFE_CAST(voters AS INT64)) * 100), 2) AS female_count_per,
@@ -40,4 +41,35 @@ router.get('/get_count_data', async (req, res) => {
     }
 });
 
+
+
+router.get('/location', async (req, res) => {
+    try {
+        // Get parameters from request query
+        const { sector, slno } = req.query;
+
+        // Construct the query
+        const query = `
+            SELECT
+                part_lat_long,
+                part_lat,
+                part_long,
+                sector,
+                part_name
+            FROM
+                \`modified-glyph-416314.demp_dev_master.demp_location\`
+            WHERE
+                sector = ${sector} AND
+                slno = ${slno}`;
+
+        // Execute the query
+        const rows = await bigqueryService.executeQuery(query);
+
+        // Return the result
+        res.status(200).json({ status: 'success', data: rows });
+    } catch (error) {
+        console.error('Error fetching location details:', error);
+        res.status(500).json({ status: 'error', message: 'Internal server error' });
+    }
+});
 module.exports = router;
