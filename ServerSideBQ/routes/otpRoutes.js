@@ -14,7 +14,6 @@ router.post("/send_otp_sms", (req, res) => {
   if (!/^\d{10}$/.test(mobileNumber)) {
     return res.status(400).json({ error: "Invalid mobile number format" });
   }
-  // otpService.sendOTP(mobileNumber);
   otpService.sendSMS(mobileNumber);
   res.json({ status: "success", message: "OTP sent successfully" });
 });
