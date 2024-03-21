@@ -13,7 +13,7 @@ async function checkMobileNumberExists(mobileNumber) {
     console.log(mobileNumber);
     const query = `SELECT blo_mob, blo_name, sector FROM \`modified-glyph-416314.demp_dev_master.demp_auth_level_data\` WHERE blo_mob = '${mobileNumber}'`;
     const [rows] = await bigqueryService.executeQuery(query);
-    console.log(rows.length);
+    // console.log("this is lenght ", rows);
     return rows != null; // Return true if mobile number exists, false otherwise
   } catch (error) {
     console.error("Mobiile Number Does not Exist", error);
@@ -71,8 +71,6 @@ async function sendSMS(destinationNumber) {
         from: process.env.TWILIO_PHONE_NUMBER,
         to: concatinatedNumber,
       });
-
-      res.send({ message, message: "Message sent" });
     } else {
       console.log("Mobile number does not exist in the database.");
       return {
@@ -81,8 +79,8 @@ async function sendSMS(destinationNumber) {
       };
     }
   } catch (error) {
-    console.error("Error sending WhatsApp message:", error);
-    return { status: "failed", message: "Error sending WhatsApp message" };
+    console.error("Error sending otp message:", error);
+    return { status: "failed", message: "Error sending otp  message" };
   }
 }
 
@@ -133,6 +131,42 @@ async function verifyOtp(mobileNumber, otp) {
   }
 }
 
+async function sendExternalSMS(destinationNumber, textBody, mobArray) {
+  try {
+    const len = mobArray.length;
+    // Check if mobile number exists in the database
+    const mobileNumberExists = await checkMobileNumberExists(destinationNumber);
+    if (mobileNumberExists) {
+      // const concatinatedNumber = "+91" + destinationNumber;
+
+      const client = twilio(
+        process.env.TWILIO_ACCOUNT_SID,
+        process.env.TWILIO_AUTH_TOKEN
+      );
+      // console.log(textBody);
+      console.log("first", mobArray[0]);
+      for (let i = 0; i < len; i++) {
+        console.log("inside");
+        const concatinatedNumber = "+91" + mobArray[i];
+        const message = await client.messages.create({
+          body: textBody,
+          from: process.env.TWILIO_PHONE_NUMBER,
+          to: concatinatedNumber,
+        });
+      }
+    } else {
+      console.log("Mobile number does not exist in the database.");
+      return {
+        status: "failed",
+        message: "Mobile number does not exist in the database",
+      };
+    }
+  } catch (error) {
+    console.error("Error sending WhatsApp message:", error);
+    return { status: "failed", message: "Error sending WhatsApp message" };
+  }
+}
+
 async function checkToken(token) {
   const query = `
       SELECT token
@@ -154,4 +188,5 @@ module.exports = {
   sendSMS,
   saveTokenInCache,
   checkToken,
+  sendExternalSMS,
 };
